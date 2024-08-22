@@ -1,0 +1,198 @@
+\documentclass[a4paper,12pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\setlength{\parindent}{0pt}
+
+\usepackage{microtype}
+\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{calligra}
+  %\DeclareFontFamily{U}{calligra}{}
+  %\DeclareFontShape{U}{calligra}{m}{n}{<->s*[1.24]callig15}{}
+\usepackage[left=1.6cm,right=1.6cm,top=1.4cm,bottom=1cm]{geometry}
+\usepackage{xspace}
+\usepackage{siunitx}
+  \sisetup{exponent-product=\cdot,
+           output-decimal-marker = {,}}
+
+\usepackage{upgreek}
+\usepackage{graphicx}
+  \graphicspath{{/home/slisakov/yadisk/plots/}}
+\usepackage{floatrow}
+\usepackage{caption}
+  \captionsetup{labelformat=empty}
+\usepackage{wrapfig}
+  \setlength{\intextsep}{0pt}
+
+\usepackage{array}
+  \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+  \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+  \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+
+\usepackage[auto-label]{exsheets}
+  %\renewcommand\thequestion{\thechapter\arabic{question}}
+  \SetupExSheets{headings=runin, counter-format = qu}
+  \DeclareInstance{exsheets-heading}{runin}{default}{
+    runin = true,
+    number-post-code = \bf.\hspace{0.3em},
+    attach = { main[hc,vc]number[l,vc](-2em,0pt) }
+  }
+
+\pagestyle{empty}
+\input{/home/slisakov/yadisk/documents/1514/physics/10/pb_10/abbr_10.tex}
+\input{/home/slisakov/yadisk/documents/1514/physics/9/pb_9/abbr.tex}
+\def\arraystretch{1.3}
+
+\def\dem[#1,#2,#3]{\texttt{(20#1–В#2-#3)}\hspace{3pt}\xspace}
+%\def\sg[#1]{\texttt{(#1)}\hspace{3pt}\xspace}
+\def\sg[#1,#2]{\texttt{(№#1,#2)}\hspace{3pt}\xspace}
+\def\dva{\textbf{\textit{два}}\xspace}
+\def\vse{\textbf{\textit{все}}\xspace}
+\def\bu[#1]{\textbf{\uline{#1}}}
+\def\bi[#1]{\textbf{\textit{#1}}}
+\def\kuda{\textbf{\textit{(вверх, вниз, влево, вправо, от наблюдателя, к наблюдателю)}}\xspace}
+\def\podberite{%
+  К каждой позиции первого столбца подберите соответствующую позицию
+  второго и запишите в таблицу выбранные цифры под соответствующими
+  буквами.\\}
+\def\izm{%
+  \vspace*{1mm}Для каждой величины определите соответствующий характер изменения:
+  \begin{enumerate}
+    \item увеличивается
+    \item уменьшается
+    \item не изменяется
+  \end{enumerate}
+  Запишите в таблицу выбранные цифры для каждой физической
+  величины. Цифры в ответе могут повторяться. \\
+}
+
+
+\usepackage[export]{adjustbox}
+%%% Instead of wrapfig, for 1 paragraph
+\newsavebox{\illustration}% used to pass image
+\newenvironment{leftfigure}[1]{% #1=line number for start of illustration (1=first)
+  \setlength{\dimen2}{\dimexpr \wd\illustration+\columnsep}% indentation
+  \setlength{\dimen0}{\dimexpr \linewidth-\dimen2}% reduced line width
+  \setlength{\dimen1}{\dimexpr \ht\illustration + \dp\illustration}% total height
+  \setlength{\dimen3}{0pt}% image offset
+  \commonfigure{#1}}{}
+\newenvironment{rightfigure}[1]{% #1=line number for start of illustration (1=first)
+  \setlength{\dimen3}{\dimexpr \linewidth-\wd\illustration}% offset to image
+  \setlength{\dimen0}{\dimexpr \dimen3-\columnsep}% reduced line width
+  \setlength{\dimen1}{\dimexpr \ht\illustration + \dp\illustration}% total height
+  \setlength{\dimen2}{0pt}% indentation
+  \commonfigure{#1}}{}
+\newcommand{\commonfigure}[1]{% combine environments
+  \count1=\numexpr \dimen1/\baselineskip\relax
+  \ifdim \dimen1>\the\count1\baselineskip\relax
+    \advance\count1 by 1
+  \fi
+  \count2=0% construct \parshape arguments
+  \ifnum #1<2\relax
+    \edef\shape{\the\numexpr \count1+1}%
+  \else
+    \edef\shape{\the\numexpr \count1+#1}%
+    \loop\advance\count2 by 1
+    \ifnum\count2<#1\relax
+      \edef\shape{\shape\space 0pt \the\linewidth}%
+    \repeat
+    \count2=0
+  \fi
+  \loop\ifnum\count2<\count1
+    \edef\shape{\shape\space \the\dimen2\space \the\dimen0}%
+    \advance\count2 by 1
+  \repeat
+  \edef\shape{\shape\space 0pt \the\linewidth}%
+  \par\noindent\rlap{\hspace{\dimen3}% overlap illustration
+    \raisebox{\dimexpr \ht\strutbox+\baselineskip-#1\baselineskip-\ht\illustration}%
+      [0pt][0pt]{\usebox\illustration}}%
+  \strut\vspace{-3.1ex}% approximate the vertical spacing for question
+  \everypar{\parshape=\shape\everypar{}}%
+}
+
+
+
+\begin{document}
+
+\section*{Реальные задания ЕГЭ–2020 по физике}
+
+%\setcounter{question}{0}
+%\begin{question}[ID=1]
+    %Дан график $x(t)$, парабола с вершиной в нуле, проходит через (2;2).
+    %Определите проекцию $a_x$ ускорения тела.
+  %\begin{solution} $a_x=1\mss$ \end{solution}
+%\end{question}
+
+\setcounter{question}{26}
+\begin{question}[ID=27]
+    Цепь, изображённая на рисунке, состоит из источника с ненулевым
+    внутренним сопротивлением, двух одинаковых резисторов,
+    конденсатора и двух идеальных вольтметров. Как изменятся
+    показания вольтметров, если ключ замкнуть? Ответ объясните,
+    опираясь на известные вам законы физики.
+
+    \hfil\includegraphics[width=0.5\textwidth]{27_2020_real}\\
+  \begin{solution} \end{solution}
+\end{question}
+
+
+\begin{question}[ID=28]
+  Груз медленно поднимают с помощью рычага, прикладывая силу \FN[350] как
+  показано на рисунке. Рычаг сделан из однородного
+  стержня массой \mkg[10] и длиной \Lm[4]. К рычагу на расстоянии $b$ от
+  шарнира прикреплён груз массой \Mkg[75]. Найти расстояние $b$. \\[1ex]
+
+    \hfil\includegraphics[width=0.3\textwidth]{28v17_2020}\\
+  \begin{solution} $b = \dfrac{FL - mgL/2}{Mg}$ \end{solution}
+\end{question}
+
+\begin{question}[ID=29]
+  Грузы массой \mkg[0.5] и $M$ соединены невесомой нерастяжимой нитью,
+  перекинутой через блок как показано на рисунке. Наклон плоскости, на
+  которой расположен груз массой $M$, составляет \agr[30]. Коэффициент
+  трения между грузом и плоскостью \mub[0.3]. Найти максимальную массу
+  груза $M$, при которой система ещё находится в покое.
+  Трением в блоке пренебречь.
+
+    \hfil\includegraphics[width=0.4\textwidth]{29_2020_real}\\
+  \begin{solution} $M=\dfrac{m}{\sina-\mu\cosa} \approx \num{2.1}\kg$ \end{solution}
+\end{question}
+
+\begin{question}[ID=30]
+  Углекислый газ $\text{CO}_2$ находится в сосуде при температуре 300\K.
+  При нагревании газа он разлагается в соответствии со следующим
+  уравнением: $2\,\text{CO}_2 \leftrightarrow 2\,\text{CO} + \text{O}_2$.
+  График зависимости количества распавшихся молекул $\text{CO}_2$ изображён
+  на рисунке. Найдите парциальное давление кислорода, если давление смеси
+  газов при температуре 3000\K составляет 100\kPa.
+
+    \hfil\includegraphics[width=0.4\textwidth]{30_2020_real}\\
+  \begin{solution} $p_{\text{O}_2} = \dfrac{3p}{13} \approx 23\kPa$ \end{solution}
+\end{question}
+
+\begin{question}[ID=31]
+  Круглый алюминиевый виток находится в магнитном поле с индукцией
+  \num{5e-3}\;Тл, причём вектор индукции магнитного поля перпендикулярен
+  плоскости витка. Виток растягивают вдоль диаметра, при этом по нему
+  протекает заряд $q=4\mCl$. Найдите радиус витка, если отношение
+  сопротивления витка к его длине равно $\rho_l=\num{0.1}$\;Ом/м.
+
+  \begin{solution} $r = \dfrac{2q}{B}\rho_l = \num{0.16}\m$ \end{solution}
+\end{question}
+
+\begin{question}[ID=32]
+  С помощью тонкой собирающей линзы с фокусным расстоянием 15\cm на экране
+  получено чёткое изображение предмета с пятикратным увеличением. Затем
+  экран придвигают к линзе на 30\cm, и предмет двигают так, чтобы снова
+  получилось чёткое изображение на экране. Линзу при этом не перемещали.
+  Найдите новое увеличение. Постройте на рисунке изображения, полученные в
+  линзе.
+  \begin{solution} $\Upgamma_2 = 3$ \end{solution}
+\end{question}
+
+%\newpage\twocolumn
+%\printsolutions
+\end{document}
